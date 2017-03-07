@@ -7,7 +7,10 @@ import android.widget.TextView;
 
 public class Details extends AppCompatActivity {
 
-   TextView tvDetails;
+    TextView tvDetailRange;
+    TextView tvDetailPulse;
+    String range;
+    String pulse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,11 +18,17 @@ public class Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        tvDetails = (TextView) findViewById(R.id.textViewDetails);
+        tvDetailRange = (TextView) findViewById(R.id.textViewDetailsRange);
+        tvDetailPulse = (TextView) findViewById(R.id.textViewDetailsPulse);
 
-        Intent intent = getIntent();
-        String value = intent.getStringExtra("Details");
-        tvDetails.setText("Heart Rate Details \n" + value);
+        Bundle extras = getIntent().getExtras();
+
+       range = extras.getSerializable("DetailsRange").toString();
+        pulse = extras.getSerializable("DetailsPulse").toString();
+
+        tvDetailRange.setText("Range Details: \n" + range);
+        tvDetailPulse.setText("Pulse Details: \n" + pulse);
+
 
 
     }

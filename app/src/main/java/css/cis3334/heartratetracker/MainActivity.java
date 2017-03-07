@@ -48,8 +48,13 @@ public class MainActivity extends AppCompatActivity {
                 HeartRate hr = (HeartRate) parent.getItemAtPosition(position);
                 tvSelect.setText("You selected: " + hr.toString());
 
+
+                String range = hr.getRangeName().toString();
+                Double pulse = Double.parseDouble(hr.getPulse().toString());
+
                 Intent myIntent = new Intent(MainActivity.this, Details.class);
-                myIntent.putExtra("Details", hr.toString()); //Optional parameters
+                myIntent.putExtra("DetailsRange", range);
+                myIntent.putExtra("DetailsPulse", pulse); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
 
             }
